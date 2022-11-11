@@ -1,0 +1,66 @@
+.menu {
+  width: 80%;
+  margin: 0 auto 2em;
+  .menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:not(:last-child) {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    .menu-item--details {
+      display: flex;
+      align-items: center;
+      gap: 2em;
+      img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .menu-item--info {
+        h3 {
+          .price {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 1em;
+            border-radius: 40%;
+            padding: 0.3em;
+            font-size: 16px;
+            font-weight: normal;
+            background-color: #eee;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+    }
+    form.menu-item--form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      .qty-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 0.5em;
+        input {
+          width: 4em;
+          height: 3em;
+          text-align: center;
+        }
+        .minus,
+        .plus {
+          width: 1em;
+          font-weight: bold;
+          font-size: 1.5em;
+          cursor: pointer;
+          user-select: none;
+        }
+      }
+    }
+  }
+}

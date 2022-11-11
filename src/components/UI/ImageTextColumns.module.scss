@@ -1,0 +1,33 @@
+@import '../../variables';
+
+.image-text-columns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  margin: 2em;
+  padding: 2em 0;
+}
+.image-text-columns.dark {
+  @include darkMode;
+}
+.image-text-columns > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  padding: 80px;
+}
+.image-text-columns > * > h2 {
+  margin-bottom: 0;
+  text-shadow: 1px 1px 0.5px rgba(0, 0, 0, 0.1);
+}
+.image-text-columns > * > img {
+  width: 100px;
+}
+@media only screen and (max-width: 728px) {
+  .image-text-columns {
+    flex-direction: column;
+  }
+}

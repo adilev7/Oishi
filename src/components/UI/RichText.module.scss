@@ -1,0 +1,15 @@
+@import '../../variables';
+
+.rich-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4em 20%;
+}
+.rich-text.dark {
+  @include darkMode
+}
+.rich-text h1 {
+  margin-top: initial;
+}

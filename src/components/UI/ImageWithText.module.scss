@@ -1,0 +1,28 @@
+@import '../../variables';
+
+.image-with-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.image-with-text.dark {
+  @include darkMode;
+}
+.image-with-text > * {
+  width: 50%;
+}
+.image-with-text > .text {
+  text-align: left;
+  padding: 10%;
+}
+@media only screen and (max-width: 728px) {
+  .image-with-text {
+    flex-direction: column;
+    > * {
+      width: 100%;
+    }
+    > .text {
+      order: 1;
+    }
+  }
+}

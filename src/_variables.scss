@@ -1,0 +1,6 @@
+$white: #fff;
+$dark: rgb(30, 30, 30);
+@mixin darkMode {
+  background-color: $dark;
+  color: $white;
+}

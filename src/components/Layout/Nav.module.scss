@@ -1,0 +1,35 @@
+.main-nav,
+.user-nav {
+  display: flex;
+  align-items: center;
+  &.vertical {
+    flex-direction: column;
+    align-items: initial;
+    justify-content: center;
+  }
+  li a {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    text-decoration: initial;
+    color: #fff;
+    transition: color 0.2s ease-in-out;
+    &.activeLink:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      display: block;
+      background-color: #fff;
+      width: 30px;
+      height: 2px;
+    }
+  }
+}
+
+footer .main-nav a.activeLink,
+footer .user-nav a.activeLink {
+  color: #fff;
+  &:after {
+    display: none;
+  }
+}

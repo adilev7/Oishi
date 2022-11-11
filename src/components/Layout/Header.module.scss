@@ -1,0 +1,68 @@
+// @import '../../variables';
+
+.header {
+  background-color: #FFF !important;
+  color: #000 !important;
+  .logo {
+    color: #000;
+  }
+  &.dark {
+    background-color: #000 !important;
+    color: #FFF !important;
+    .logo {
+      color: #FFF !important;
+    }
+  }
+  .header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 1em;
+    .main-nav {
+      svg {
+        display: none;
+      }
+    }
+  }
+  .drawer-trigger {
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    .cart-bubble {
+      position: absolute;
+      top: 5px;
+      right: -5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 100%;
+      background-color: tomato;
+      border: 2px solid #000;
+      transition: transform 0.2s ease-in-out;
+      &.is-transitioning {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+.user-nav {
+  flex-direction: column;
+}
+@media only screen and (max-width: 628px) {
+  .header {
+    .header-nav {
+      justify-content: flex-end;
+    }
+  }
+  .main-nav {
+    flex-direction: column;
+  }
+  
+}
+
+

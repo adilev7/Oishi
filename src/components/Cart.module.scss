@@ -1,0 +1,112 @@
+ul.cart {
+  position: static;
+  margin: 0 auto 2em;
+  .cart-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    .cart-item--image img {
+      display: block;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .cart-item--info {
+      display: grid;
+      grid-template: repeat(2, 1fr)/1fr 4em;
+      align-items: baseline;
+      gap: 1em;
+      padding-left: 1em;
+      .title {
+        grid-row: 1;
+        grid-column: 1;
+        font-weight: bold;
+      }
+      .price {
+        grid-row: 2;
+        grid-column: 2;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1em;
+        font-size: 21px;
+        font-weight: bold;
+      }
+      .cart-item--form {
+        grid-row: 2;
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+        .qty-wrap {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          gap: 0.5em;
+          input {
+            width: 4em;
+            height: 3em;
+            text-align: center;
+          }
+          .minus,
+          .plus {
+            width: 1em;
+            font-weight: bold;
+            font-size: 1.5em;
+            cursor: pointer;
+            user-select: none;
+          }
+        }
+      }
+      .remove {
+        grid-row: 1;
+        grid-column: 2;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        font-size: 21px;
+        > * {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .empty {
+    display: block;
+    text-align: center;
+  }
+}
+.cart-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  height: 150px;
+  width: 100%;
+  padding: 1em;
+  background-color: #fff;
+  box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+  .total-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 24px;
+    .price {
+      font-weight: bold;
+      // color: tomato;
+    }
+  }
+}
