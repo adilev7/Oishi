@@ -38,6 +38,12 @@ button {
     color: #000;
     background-color: transparent;
   }
+  &:disabled {
+    color: #aaa;
+    background-color: #ddd;
+    border: 1px solid #aaa;
+    cursor: initial;
+  }
   &.outline {
     color: #000;
     background-color: transparent;

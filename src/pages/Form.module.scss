@@ -1,0 +1,21 @@
+.form-error {
+  color: rgb(202, 51, 51);
+}
+.form {
+  margin: 0 auto;
+  width: 40vw;
+}
+.credit-card-wrap {
+  background-color: #f8f8f8 !important;
+}
+.credit-card-wrap input {
+  background-color: #fff;
+}
+.form-additional-link {
+  margin: 1em;
+}
+@media only screen and (max-width: 728px) {
+  .form {
+    width: 90vw;
+  }
+}

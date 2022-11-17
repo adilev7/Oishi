@@ -1,41 +1,95 @@
-import { sleep, hash } from "../utils/methods";
-import bcrypt from "bcryptjs";
+import { sleep } from "../utils/methods";
 
 const users = [
   {
     id: "1",
     first_name: "Adi",
     last_name: "Lev",
+    address: "54 Ha Lamed He, Givatayim",
+    credit_cards: [
+      {
+        credit_num: 1234123412341111,
+        credit_exp: "05/2024",
+        cvv: 846,
+      },
+      {
+        credit_num: 1234123412342222,
+        credit_exp: "05/2024",
+        cvv: 846,
+      },
+    ],
     email: "lev733@gmail.com",
-    password: hash("Adi123"),
+    password: "Adi123",
   },
   {
     id: "2",
     first_name: "Leanne",
     last_name: "Graham",
+    address: "8 Ha Nasi, Givat Shmuel",
+    credit_cards: [
+      {
+        credit_num: 1234123412343333,
+        credit_exp: "05/2024",
+        cvv: 847,
+      },
+      {
+        credit_num: 1234123412344444,
+        credit_exp: "05/2024",
+        cvv: 847,
+      },
+    ],
     email: "Sincere@april.biz",
-    password: hash("Leanne123"),
+    password: "Leanne123",
   },
   {
     id: "3",
     first_name: "Ervin",
     last_name: "Howell",
+    address: "11 Jabotinsky, Bnei Brak",
+    credit_cards: [
+      {
+        credit_num: 1234123412345555,
+        credit_exp: "05/2024",
+        cvv: 889,
+      },
+    ],
     email: "Shanna@melissa.tv",
-    password: hash("Ervin123"),
+    password: "Ervin123",
   },
   {
     id: "4",
     first_name: "Clementine",
     last_name: "Bauch",
+    address: "135 Jabotinsky, Ramat Gan",
+    credit_cards: [
+      {
+        credit_num: 1234123412346666,
+        credit_exp: "05/2024",
+        cvv: 864,
+      },
+      {
+        credit_num: 1234123412341234,
+        credit_exp: "05/2024",
+        cvv: 337,
+      },
+    ],
     email: "Nathan@yesenia.net",
-    password: hash("Clementine123"),
+    password: "Clementine123",
   },
   {
     id: "5",
     first_name: "Patricia",
     last_name: "Lebsack",
+    address: "22 Arlozorov, Tel Aviv",
+    credit_cards: [
+      {
+        credit_num: 1234123412347777,
+        credit_exp: "05/2024",
+        cvv: 168,
+      },
+    ],
     email: "Julianne.OConner@kory.org",
-    password: hash("Patricia123"),
+    password: "Patricia123",
   },
 ];
 
@@ -44,31 +98,16 @@ export const getUser = async (id) => {
   return users.find((user) => user.id === id);
 };
 
-const validate = async ({ email, password }) => {
-  let isApproved = false;
-  let message = "Invalid email or password";
-
+export const login = (email, password) => {
+  const loginResponse = { isApproved: false };
   const user = users.find((u) => u.email === email);
-  if (!user) throw new Error({ data: isApproved, message });
-
-  const passwordIsValid = await bcrypt.compare(password, user.password);
-  if (!passwordIsValid) throw new Error({ data: isApproved, message });
-
-  isApproved = true;
-  message = "Successfully logged in";
-  return { data: isApproved, message };
+  if (!user) return loginResponse;
+  if (user.password !== password) return loginResponse;
+  loginResponse.isApproved = true;
+  localStorage.setItem("logged_in", loginResponse.isApproved);
+  return loginResponse;
 };
 
-export const login = async ({ email, password }) => {
-  // try {
-    const res = await validate(email, password);
-    localStorage.setItem("logged_in", res.data);
-    return res.message;
-  // } catch (err) {
-  //   console.log(err.message);
-    
-  // }
-};
 export const logout = () => {
   localStorage.removeItem("logged_in");
 };
@@ -77,9 +116,7 @@ export const createUser = async (newUser) => {
   await sleep();
   const emailExists = users.some((u) => u.email === newUser.email);
   if (emailExists) return;
-  const salt = await bcrypt.genSalt(10);
-  const user = { ...newUser, password: await bcrypt.hash(newUser.password, salt) };
-  console.log({user})
-  users.push(user);
-  console.log('User created successfully!');
+  console.log({ newUser });
+  users.push(newUser);
+  console.log("User created successfully!");
 };
