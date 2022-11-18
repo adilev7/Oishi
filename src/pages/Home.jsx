@@ -12,7 +12,7 @@ const Home = () => {
     <>
       <Banner
         image='https://iso.500px.com/wp-content/uploads/2020/02/Sushi-and-sashimi-variety-on-rustic-background-By-Alena-Haurylik-2.jpeg'
-        title='UNAGI'
+        title='Oishī'
         height='100vh'
       />
       <div className='page-content'>
