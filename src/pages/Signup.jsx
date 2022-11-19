@@ -291,10 +291,11 @@ const userReducer = (prevState, action) => {
 
 const Signup = () => {
   const [user, userDispatch] = useReducer(userReducer, userInitialState);
-  const [disableSubmit, setDisableSubmit] = useState(true)
+  const [disableSubmit, setDisableSubmit] = useState(true);
 
   const disableSubmitHandler = useCallback(() => {
     const userEntries = Object.entries(user);
+    // const values = Object.keys(userEntries).map((k) => Array.isArray(userEntries[k]) ? userEntries[k].map((c) => c.value) : userEntries[k].value);
     for (const [i,[key, value]] of Object.entries(userEntries)) {
       if (key === "credit_cards") {
         value.forEach((card) => {
@@ -304,10 +305,9 @@ const Signup = () => {
               setDisableSubmit(true);
               return;
             }
-            debugger;
-            if(Number(i) === userEntries.length - 1 && Number(index) === cardValues.length - 1) {
-              setDisableSubmit(false);
-            }
+            // if(Number(i) === userEntries.length - 1 && Number(index) === cardValues.length - 1) {
+            //   setDisableSubmit(false);
+            // }
           }
         });
         continue;
